@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #f2c299;
+  --color-secondary: #d8cfc4;
+  --color-terracotta: #ac5e49;
+  --color-charcoal: #403b38;
+  --color-off-white: #f5f1ec;
+
+  --font-sans: "Noto Kufi Arabic", sans-serif;
+  --font-display: "Noto Kufi Arabic", sans-serif;
+
+  --radius-default: 0.75rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --primary-color: #f2c299;
+  --secondary-color: #d8cfc4;
+  --terracotta: #ac5e49;
+  --charcoal: #403b38;
+  --bg-off-white: #f5f1ec;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.filled {
+  font-variation-settings: "FILL" 1;
+}
+
+body {
+  background-color: var(--bg-off-white);
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+}
