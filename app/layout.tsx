@@ -2,9 +2,48 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "سيلفر كيتشن | أجهزة مطبخ احترافية",
+  title: "بيتي | أجهزة مطبخ احترافية وصحية في الجزائر",
   description:
-    "إعادة تعريف كفاءة المطبخ بأجهزة احترافية للمنزل الحديث. الجودة، المتانة، والابتكار في كل قطعة.",
+    "اكتشف مجموعة بيتي للأجهزة المنزلية الذكية. قلايات هوائية، خلاطات ومطاحن عالية الجودة لتحويل مطبخك إلى مساحة احترافية وصحية.",
+  keywords: [
+    "بيتي",
+    "أجهزة مطبخ",
+    "قلاية هوائية",
+    "طهي صحي",
+    "الجزائر",
+    "أجهزة منزلية",
+    "خلاط كهربائي",
+  ],
+  authors: [{ name: "Bayti" }],
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "ar_DZ",
+    url: "https://bayti-dz.vercel.app/", // Assuming a placeholder if not known
+    siteName: "بيتي - Bayti",
+    title: "بيتي | أجهزة مطبخ احترافية وصحية",
+    description:
+      "أفضل أجهزة المطبخ الذكية في الجزائر. جودة احترافية وتصميم عصري لطعام صحي ولذيذ.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Logo Bayti - بيتي",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "بيتي | أجهزة مطبخ احترافية",
+    description:
+      "ارتقِ بتجربة الطهي مع أجهزة بيتي الذكية. قلايات هوائية وفراّمات احترافية.",
+    images: ["/logo.png"],
+  },
+  alternates: {
+    canonical: "https://bayti-dz.vercel.app/",
+  },
 };
 
 export default function RootLayout({

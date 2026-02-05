@@ -13,7 +13,7 @@ export default function ProductDetails() {
     discount: "خصم 17%",
     description:
       "قلاية هوائية صحية وعصرية من IRIS بسعة كبيرة 10 لتر، تتيح لك تحضير وجبات لذيذة ومقرمشة بدون زيت تقريبًا، مع شاشة رقمية ذكية و12 برنامج طهي مدمج.",
-    imageSrc: "/Asset 27@1080x.png",
+    imageSrc: "/2323.png",
 
     features: [
       {

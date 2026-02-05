@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bayti-dz.vercel.app/sitemap.xml
