@@ -63,7 +63,7 @@ export default function ProductInfo({
               <span className="material-symbols-outlined text-terracotta text-lg">
                 check_circle
               </span>
-              <strong>{feature.label}:</strong> {feature.value}
+              <strong>{feature.label}</strong> {feature.value}
             </li>
           ))}
         </ul>
