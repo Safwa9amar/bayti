@@ -23,7 +23,7 @@ export default function OrderForm() {
     setLoading(true);
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyaR9Yv-e6E2QGOs2hCBLLJ8Va1fp01tpp6gEbmXlGcniIW8Kn67Q4SJtJl8pC_hdHN/exec",
+        "https://script.google.com/macros/s/AKfycbytcQViZXjn0tslSMGEEKzehEFFCvmXsqVjpqtYLTc9ryARFPVgZP4WB4QNeMq-ADUs/exec",
         {
           method: "POST",
           //   headers: { "Content-Type": "application/json" },
