@@ -10,7 +10,7 @@ export default function Nav() {
               className="h-24 w-auto rounded-xl"
             />
           </div>
-          <div className="hidden md:flex items-center space-x-reverse space-x-8 font-medium">
+          <div className="hidden md:flex items-center  space-x-8 font-medium">
             <a className="hover:text-terracotta transition-colors" href="#">
               الرئيسية
             </a>
@@ -26,6 +26,7 @@ export default function Nav() {
             >
               المميزات
             </a>
+
             <a className="hover:text-terracotta transition-colors" href="#">
               آراء العملاء
             </a>

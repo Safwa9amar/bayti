@@ -34,7 +34,7 @@ export default function Testimonials() {
                   الخبز والشوي والنتائج كانت دائماً مبهرة. أفضل استثمار لمطبخي
                   هذا العام."
                 </p>
-                <p className="font-bold">— مايكل ك.، هاوي طهي</p>
+                <p className="font-bold">— حمزة ح.، هاوي طهي</p>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function Testimonials() {
                 local_shipping
               </span>
               <h4 className="font-bold mb-1">شحن سريع</h4>
-              <p className="text-white/60 text-sm">توصيل خلال 2-3 أيام عمل</p>
+              <p className="text-white/60 text-sm">توصيل خلال1-2 أيام عمل</p>
             </div>
             <div className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
               <span className="material-symbols-outlined text-4xl text-primary mb-4">
@@ -64,8 +64,7 @@ export default function Testimonials() {
               <span className="material-symbols-outlined text-4xl text-primary mb-4">
                 credit_card
               </span>
-              <h4 className="font-bold mb-1">دفع آمن</h4>
-              <p className="text-white/60 text-sm">تشفير 100% لعملية الدفع</p>
+              <h4 className="font-bold mb-1">دفع عند الاستلام</h4>
             </div>
           </div>
         </div>
