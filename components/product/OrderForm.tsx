@@ -149,8 +149,8 @@ export default function OrderForm() {
           disabled={loading}
         >
           <option>قطعة واحدة</option>
-          <option>قطعتين (وفر 10%)</option>
-          <option>3 قطع (وفر 15%)</option>
+          <option>قطعتين (وفر 5%)</option>
+          <option>3 قطع (وفر 10%)</option>
         </select>
 
         <button
