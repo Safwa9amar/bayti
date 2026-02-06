@@ -5,14 +5,14 @@ import TrustBadges from "./product/TrustBadges";
 
 export default function ProductDetails() {
   const productData = {
-    title: "قلاية هوائية IRIS سعة 10 لتر",
+    title: "قلاية هوائية IRIS سعة 10 لتر \n IPE-AF10-220X",
     rating: 4.8,
     reviewsCount: "865 تقييم",
     price: "24,900 د.ج",
     oldPrice: "29,900 د.ج",
     discount: "خصم 17%",
     description:
-      "قلاية هوائية صحية وعصرية من IRIS بسعة كبيرة 10 لتر، تتيح لك تحضير وجبات لذيذة ومقرمشة بدون زيت تقريبًا، مع شاشة رقمية ذكية و12 برنامج طهي مدمج.",
+      "استمتع بتحضير الطعام بطريقة صحية وسريعة مع القلاية الهوائية الحديثة، التي تجمع بين التكنولوجيا المتقدمة والتصميم الأنيق لتلبية احتياجاتك اليومية. خيارك المثالي لوجبات مقرمشة بدون زيت.",
     imageSrc: "/2323.png",
 
     features: [

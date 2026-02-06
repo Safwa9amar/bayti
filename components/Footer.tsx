@@ -10,8 +10,7 @@ export default function Footer() {
               className="h-16 w-auto mb-6"
             />
             <p className="text-white/60 max-w-sm mb-6 leading-relaxed">
-              بيتي - إعادة تعريف كفاءة المطبخ بأجهزة احترافية للمنزل الحديث.
-              الجودة، المتانة، والابتكار في كل قطعة.
+              بيتي - جَوْدَةٌ تَلْمَسُهَا فِي كُلِّ رُكْنٍ.
             </p>
             <div className="flex gap-4">
               <a
