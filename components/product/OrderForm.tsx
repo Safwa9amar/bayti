@@ -8,6 +8,7 @@ export default function OrderForm() {
     phone: "",
     wilaya: "",
     address: "",
+    deliveryType: "home", // "home" or "office"
     quantity: "قطعة واحدة",
   });
 
@@ -39,6 +40,7 @@ export default function OrderForm() {
         phone: "",
         wilaya: "",
         address: "",
+        deliveryType: "home",
         quantity: "قطعة واحدة",
       });
     } catch (error) {
@@ -97,16 +99,47 @@ export default function OrderForm() {
           ))}
         </select>
 
-        <textarea
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-          placeholder="أدخل عنوان التوصيل الكامل"
-          rows={3}
-          className="w-full bg-white rounded-xl px-4 py-3"
-          required
-          disabled={loading}
-        />
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, deliveryType: "home" })}
+            className={`p-4 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${
+              form.deliveryType === "home"
+                ? "border-primary bg-primary/10"
+                : "border-off-white bg-white grayscale opacity-70"
+            }`}
+          >
+            <span className="material-symbols-outlined text-2xl">home</span>
+            <span className="font-bold">توصيل للمنزل</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, deliveryType: "office" })}
+            className={`p-4 rounded-xl border-2 flex flex-col items-center gap-2 transition-all ${
+              form.deliveryType === "office"
+                ? "border-primary bg-primary/10"
+                : "border-off-white bg-white grayscale opacity-70"
+            }`}
+          >
+            <span className="material-symbols-outlined text-2xl">
+              business_center
+            </span>
+            <span className="font-bold">توصيل للمكتب</span>
+          </button>
+        </div>
+
+        {form.deliveryType === "home" && (
+          <textarea
+            name="address"
+            value={form.address}
+            onChange={handleChange}
+            placeholder="أدخل عنوان التوصيل الكامل"
+            rows={3}
+            className="w-full bg-white rounded-xl px-4 py-3"
+            required={form.deliveryType === "home"}
+            disabled={loading}
+          />
+        )}
 
         <select
           name="quantity"
