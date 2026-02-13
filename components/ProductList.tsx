@@ -41,7 +41,7 @@ export default function ProductList({
                 <img
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   alt={product.title}
-                  src={product.imageSrc}
+                  src={product.cardImage}
                 />
                 <span className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
                   {t("cashOnDelivery")}
@@ -82,7 +82,7 @@ export default function ProductList({
                 </div>
                 <Link
                   href={`/store/product/${product.id}` as any}
-                  className="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white py-3 rounded-lg font-bold transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-primary/10 hover:bg-primary text-primary hover:text-slate-300 py-3 rounded-lg font-bold transition-colors flex items-center justify-center gap-2"
                 >
                   {t("orderNow")}
                 </Link>

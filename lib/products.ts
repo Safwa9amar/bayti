@@ -23,6 +23,7 @@ export interface Product {
   discount: string;
   description: string;
   imageSrc: string;
+  cardImage: string,
   category: string;
   features: ProductFeature[];
   testimonials: ProductTestimonial[];
@@ -41,6 +42,7 @@ export const products: Product[] = [
     discount: "توصيل مجاني",
     description: "استمتع بتحضير الطعام بطريقة صحية وسريعة مع القلاية الهوائية الحديثة، التي تجمع بين التكنولوجيا المتقدمة والتصميم الأنيق لتلبية احتياجاتك اليومية. خيارك المثالي لوجبات مقرمشة بدون زيت.",
     imageSrc: "/2323.png",
+    cardImage: "/2323-card-image.png",
     category: "أجهزة طبخ",
     features: [
       {
@@ -103,6 +105,7 @@ export const products: Product[] = [
     discount: "-17%",
     description: "استمتع بتحضير وجبات صحية ومقرمشة لجميع أفراد العائلة مع المقلاة الهوائية المزدوجة من مولتسمارت. سعة كبيرة 9 لتر وقدرة 2400 واط لنتائج احترافية وسريعة.",
     imageSrc: "/MS-AF3209-1.png",
+    cardImage: "/MS-AF3209-1-card-image.png",
     category: "أجهزة طبخ",
     features: [
       {
@@ -170,6 +173,7 @@ export const products: Product[] = [
     discount: "-18%",
     description: "اكتشف متعة الطهي الصحي مع مقلاة مولتسمارت بسعة 6 لتر. تصميم عصري موفر للمساحة مع نافذة رؤية لمتابعة نضج طعامك المفضل بسهولة.",
     imageSrc: "/ms-af1016-1.png",
+    cardImage: "/ms-af1016-1-card-image.png",
     category: "أجهزة طبخ",
     features: [
       {
@@ -242,6 +246,7 @@ export const products: Product[] = [
     discount: "-16%",
     description: "الأداء القوي يلتقي مع السعة المثالية. مقلاة مولتسمارت 8 لتر بقوة 1700 واط تمنحك طهياً متوازناً وسريعاً لجميع أطباقك المفضلة.",
     imageSrc: "/ms-af1108-1.png",
+    cardImage: "/ms-af1108-1-card-image.png",
     category: "أجهزة طبخ",
     features: [
       {
