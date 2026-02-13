@@ -1,3 +1,5 @@
+import { MdStar, MdStarBorder, MdCheckCircle } from "react-icons/md";
+
 interface ProductFeature {
   label: string;
   value: string;
@@ -28,16 +30,13 @@ export default function ProductInfo({
     <div>
       <div className="flex items-center gap-2 mb-2">
         <div className="flex text-terracotta">
-          {[...Array(5)].map((_, i) => (
-            <span
-              key={i}
-              className={`material-symbols-outlined text-sm ${
-                i < Math.floor(rating) ? "filled" : ""
-              }`}
-            >
-              star
-            </span>
-          ))}
+          {[...Array(5)].map((_, i) =>
+            i < Math.floor(rating) ? (
+              <MdStar key={i} className="text-sm" />
+            ) : (
+              <MdStarBorder key={i} className="text-sm" />
+            ),
+          )}
         </div>
         <span className="text-sm font-semibold text-charcoal/60">
           {rating} ({reviewsCount})
@@ -60,9 +59,7 @@ export default function ProductInfo({
         <ul className="grid grid-cols-1 gap-2 list-none p-0">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-terracotta text-lg">
-                check_circle
-              </span>
+              <MdCheckCircle className="text-terracotta text-lg" />
               <strong>{feature.label}</strong> {feature.value}
             </li>
           ))}

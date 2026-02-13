@@ -1,98 +1,150 @@
+import {
+  MdHome,
+  MdPhone,
+  MdEmail,
+  MdLocationOn,
+  MdPayments,
+} from "react-icons/md";
+import { FaWhatsapp, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-charcoal text-white pt-20 pb-10 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-2">
-            <img
-              src="/logo.png"
-              alt="Bayti Logo"
-              className="h-16 w-auto mb-6"
-            />
-            <p className="text-white/60 max-w-sm mb-6 leading-relaxed">
-              بيتي - جَوْدَةٌ تَلْمَسُهَا فِي كُلِّ رُكْنٍ.
+    <footer className="bg-brand-warm text-brand-dark pt-24 pb-12 transition-colors duration-300">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Info */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-primary flex items-center gap-2">
+              <img
+                src="/logo.png"
+                alt="بيتي"
+                className="h-22 w-auto rounded-xl"
+              />
+            </h2>
+            <p className="text-brand-dark/70 leading-relaxed font-semibold">
+              جَوْدَةٌ تَلْمَسُهَا فِي كُلِّ رُكْنٍ
             </p>
             <div className="flex gap-4">
               <a
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-charcoal transition-all"
+                className="w-10 h-10 bg-brand-dark rounded-md flex items-center justify-center hover:bg-primary transition-colors"
                 href="#"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
-                </svg>
+                <FaFacebook className="text-white text-xl" />
               </a>
               <a
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-charcoal transition-all"
+                className="w-10 h-10 bg-brand-dark rounded-md flex items-center justify-center hover:bg-primary transition-colors"
                 href="#"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-                </svg>
+                <FaInstagram className="text-white text-xl" />
+              </a>
+              <a
+                className="w-10 h-10 bg-brand-dark rounded-md flex items-center justify-center hover:bg-primary transition-colors"
+                href="#"
+              >
+                <FaTiktok className="text-white text-xl" />
               </a>
             </div>
           </div>
+          {/* Quick Links */}
           <div>
-            <h4 className="font-bold mb-6">روابط سريعة</h4>
-            <ul className="space-y-4 text-white/60">
+            <h4 className="text-xl font-bold mb-8 relative inline-block text-primary">
+              {t("quickLinks")}
+              <span className="absolute -bottom-2 right-0 w-8 h-1 bg-primary"></span>
+            </h4>
+            <ul className="space-y-4 text-brand-dark/60 font-medium">
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  قصتنا
+                  {t("about")}
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  طلبات الجملة
+                  الأسئلة الشائعة
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  سياسة الضمان
+                  {t("policy")}
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  معلومات الشحن
+                  طرق التوصيل
                 </a>
               </li>
             </ul>
           </div>
+          {/* Categories */}
           <div>
-            <h4 className="font-bold mb-6">الدعم</h4>
-            <ul className="space-y-4 text-white/60">
+            <h4 className="text-xl font-bold mb-8 relative inline-block text-primary">
+              الأقسام
+              <span className="absolute -bottom-2 right-0 w-8 h-1 bg-primary"></span>
+            </h4>
+            <ul className="space-y-4 text-brand-dark/60 font-medium">
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  مركز المساعدة
+                  مقالي هوائية
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  تتبع الطلب
+                  أدوات الطبخ
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  اتصل بنا
+                  ماكينات القهوة
                 </a>
               </li>
               <li>
                 <a className="hover:text-primary transition-colors" href="#">
-                  المرتجع
+                  أجهزة العناية بالمنزل
                 </a>
               </li>
             </ul>
+          </div>
+          {/* Contact & WhatsApp */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 relative inline-block text-primary ">
+              {t("contact")}
+              <span className="absolute -bottom-2 right-0 w-8 h-1 bg-primary"></span>
+            </h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-brand-dark/40 font-medium">
+                <span dir="ltr">0673124281</span>
+              </div>
+              <div className="flex items-center gap-3 text-brand-dark/40 font-medium">
+                <span>Bayti.226@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-brand-dark/40 font-medium">
+                <span>سطيف</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-sm">
-            © 2024 بيتي للأجهزة المنزلية. جميع الحقوق محفوظة.
-          </p>
-          <div className="flex gap-6 text-sm text-white/40">
-            <a className="hover:text-white transition-colors" href="#">
-              سياسة الخصوصية
-            </a>
-            <a className="hover:text-white transition-colors" href="#">
-              شروط الخدمة
-            </a>
+        <div className="border-t border-brand-dark/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-brand-dark/30 text-xs">
+          <p dir="rtl">{t("rights", { year })}</p>
+          <div className="flex gap-6 items-center">
+            <img
+              alt="Visa"
+              className="h-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-help"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbxrzRs9_ovaYeOi8N1Cef6pV-xQ_f3H9_zHFWW0lxDfJcn35uLjCBsJ4S4R_7kmBNpn6l1kNfYPGMdQ8LA0xyggEkIsR5Ock88BzGhLSLEm-LKKkoYiFMGsKNxcqCxML__CCv82BQeUGR5IIY-R7UjL8aOV3pSzC2DKOBJu4TQW9Fxj1qbjNvn9SFmDg70_f1fYBa08RMXfeoSdBIjOULLned7gjcDdZvhJ0cl-DNJbZfWYq5SGioxeHak6pAWAPATOhf7T3dLsnn"
+              title="Visa"
+            />
+            <img
+              alt="Mastercard"
+              className="h-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-help"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALbFjV98XOuUO3I_6b6NS-Q0u5rJnBbP8VvdeQ6lr-hs1oiGxTWeSlnEWbY5pUZLNx9s6W40kL1LluV71IzcjZAyuMvDpWiSW4RyMN85pZhm1d97uf-qfLMwBmfwylk2Rbt8HPbBP1_IDEkLj-NEeXqlua5xclGCfTySKop67DR3KsGt3jmT1zVo4ab6t-WNe714LqyrmsGA8t0im6eXw6nFIF2F_9nuSk2dIUloZYYMy7THcoWU-QqARUV5HqFbu9WndDocRC1GSA"
+              title="Mastercard"
+            />
+            <span className="flex items-center gap-1">
+              <MdPayments className="text-primary text-xl" />
+              الدفع عند الاستلام
+            </span>
           </div>
         </div>
       </div>

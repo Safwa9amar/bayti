@@ -1,73 +1,61 @@
+import { MdFormatQuote } from "react-icons/md";
+import { useTranslations } from "next-intl";
+
 export default function Testimonials() {
+  const t = useTranslations("Testimonials");
+  const avatars = [
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuC300sTygI41RxgH96xjtE5my6Oc0KcCBUdjs765ARFXBaajIOxwqqXL14BzCdxPTkg7ngGZJ8ASBYfnVmdUd9BrbyHIv9SFFd3SxsdcurwLTHoCSWZ7Zz_cIaZhTy7SCl6XOKPXF5d1ws6ENipcD4vDnddN9Pd8Tr9lw3IFhCjQ0oBW0ZdsXZHE2JYbYyXTCbLGgSGUhPKnowW_YfibdqUA0knuKMMdpYbt-h0CwJGVIM2kdG10kka5bJddHBkF4KNzokMdkBqjT7A",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBzwPKKSp0Pae8dSCF-xXG_ZzPLio3gw9MvR67EnvDZm-EfxTAkhHqmJWmA3d5-KVpbW_8Vf7QX1seiFwGbFB6evpfOjKKdMzbqnm3TLD_oKKW7uXVW5Q-qegs14uoVFnjHOJugLtpoeKr8I5fmk5UQgjm1c1BkNBlNqBftI3HUVZEwdxp5DHw7T5aYqgCxjMueDBMLeetO2Y64jUicmr-KzkKp_Zb9hCkTfafF8CjX8pe0P3c_ofo6tn2MgnNJECZ9wzEYFN_FCWLv",
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAk2a0vmL839W-zSluqHyzxPmBHL4EZuaDWbyMkpRVQfBomoded4ZGfzTMBnNJeIxcQdoCgelnUSvq7uNza_ZZFf2lLdGClz2ziRxPyqmSEIZ1ACUym_FYfGGaFYegpRAZgBl3KkHP4E42pq67frJ6qZ86BaPe6MFq_db-Rg2UdfMCpr-H8UWUhy3iawaukmS3Omc1uWcOHHQ7xX1wdUpfdshcLJwjhQIr8ciFnOaXxBCyhg6PwpsgtDaonzcddQCLx7nMhW0yCgavX",
+  ];
+
+  const testimonials = [0, 1, 2].map((i) => ({
+    text: t(`items.${i}.text`),
+    author: t(`items.${i}.author`),
+    location: t(`items.${i}.location`),
+    avatar: avatars[i],
+  }));
+
   return (
-    <section className="py-24 bg-charcoal text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-8">ماذا يقول الشيفات</h2>
-            <div className="space-y-8">
-              <div className="border-r-4 border-primary pr-6 py-2">
-                <div className="flex text-primary mb-2">
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                </div>
-                <p className="text-lg italic mb-4">
-                  "القلاية الهوائية من بيتي غيرت مفهومي للطبخ الصحي. البطاطس
-                  مقرمشة جداً والدجاج ينضج بسرعة مذهلة بدون أي زيت. السعة
-                  الكبيرة مثالية لعائلتي."
+    <section
+      className="container mx-auto px-4 lg:px-8 py-24 overflow-hidden"
+      id="testimonials"
+    >
+      <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <h2 className="text-4xl font-bold text-brand-dark dark:text-brand-warm">
+          {t("title")}
+        </h2>
+        <p className="text-brand-dark/60 dark:text-brand-warm/60 italic">
+          {t("subtitle")}
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((item, i) => (
+          <div
+            key={i}
+            className="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-primary/10 relative"
+          >
+            <MdFormatQuote className="text-5xl text-primary/20 absolute top-4 left-4" />
+            <p className="mb-6 relative z-10 text-lg text-brand-dark dark:text-brand-warm">
+              {item.text}
+            </p>
+            <div className="flex items-center gap-4">
+              <img
+                className="w-12 h-12 rounded-full object-cover"
+                alt={item.author}
+                src={item.avatar}
+              />
+              <div>
+                <h4 className="font-bold text-brand-dark dark:text-brand-warm">
+                  {item.author}
+                </h4>
+                <p className="text-xs text-brand-dark/50 dark:text-brand-warm/50">
+                  {item.location}
                 </p>
-                <p className="font-bold">— سارة ج.، أم مهتمة بالصحة</p>
-              </div>
-              <div className="border-r-4 border-primary pr-6 py-2">
-                <div className="flex text-primary mb-2">
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                  <span className="material-symbols-outlined filled">star</span>
-                </div>
-                <p className="text-lg italic mb-4">
-                  "واجهة التحكم باللمس سهلة جداً، والبرامج المسبقة دقيقة. جربت
-                  الخبز والشوي والنتائج كانت دائماً مبهرة. أفضل استثمار لمطبخي
-                  هذا العام."
-                </p>
-                <p className="font-bold">— حمزة ح.، هاوي طهي</p>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">
-                verified
-              </span>
-              <h4 className="font-bold mb-1">ضمان 12 شهر</h4>
-              <p className="text-white/60 text-sm">حماية كاملة واستبدال</p>
-            </div>
-            <div className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">
-                local_shipping
-              </span>
-              <h4 className="font-bold mb-1">شحن سريع</h4>
-              <p className="text-white/60 text-sm">توصيل خلال1-2 أيام عمل</p>
-            </div>
-            <div className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">
-                support_agent
-              </span>
-              <h4 className="font-bold mb-1">دعم 24/7</h4>
-              <p className="text-white/60 text-sm">مساعدة عبر الدردشة الحية</p>
-            </div>
-            <div className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
-              <span className="material-symbols-outlined text-4xl text-primary mb-4">
-                credit_card
-              </span>
-              <h4 className="font-bold mb-1">دفع عند الاستلام</h4>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -1,12 +1,26 @@
 "use client";
 import { useState } from "react";
-import wilayas from "@/data/wilayas.json";
+import { ecotrack } from "@/lib/ecotrack";
+import { LocationSelector } from "./LocationSelector";
 
-export default function OrderForm() {
+interface OrderFormProps {
+  productName: string;
+  basePrice: number;
+}
+
+import {
+  MdShoppingCartCheckout,
+  MdHome,
+  MdBusinessCenter,
+} from "react-icons/md";
+
+export default function OrderForm({ productName, basePrice }: OrderFormProps) {
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
-    wilaya: "",
+    wilayaId: 0 as number | string,
+    wilayaName: "",
+    commune: "",
     address: "",
     deliveryType: "home", // "home" or "office"
     quantity: "قطعة واحدة",
@@ -22,23 +36,75 @@ export default function OrderForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbytcQViZXjn0tslSMGEEKzehEFFCvmXsqVjpqtYLTc9ryARFPVgZP4WB4QNeMq-ADUs/exec",
-        {
-          method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...form,
-            paymentMethod: "الدفع عند الاستلام",
-          }),
-        },
-      );
+      await fetch(process.env.NEXT_PUBLIC_PRODUCT_FORM_URI || "", {
+        method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          paymentMethod: "الدفع عند الاستلام",
+        }),
+      });
+
+      // Integrate EcoTrack if configured
+
+      // Map form to EcoTrackOrder interface
+      const wilayaCode = Number(form.wilayaId);
+
+      // Calculate montant based on quantity
+      let montant = basePrice; // Base price
+      if (form.quantity === "قطعتين (وفر 5%)") {
+        montant = basePrice * 2 * 0.95;
+      } else if (form.quantity === "3 قطع (وفر 10%)") {
+        montant = basePrice * 3 * 0.9;
+      } else if (form.quantity === "قطعة واحدة") {
+        montant = basePrice;
+      }
+
+      try {
+        await ecotrack.addOrder({
+          nom_client: form.fullName,
+          telephone: form.phone,
+          adresse: form.address || `Stop Desk - ${form.commune}`, // Ensure address is NEVER empty
+          commune: form.commune,
+          code_wilaya: wilayaCode,
+          montant: montant,
+          type: 1, // Livraison
+          stop_desk: form.deliveryType === "office" ? 1 : 0,
+          stock: 0, // Assume not using storage module
+          quantite: form.quantity,
+          remarque: `الكمية: ${form.quantity}`,
+          produit: productName,
+        });
+      } catch (ecoError: any) {
+        console.error("EcoTrack submission failed:", ecoError);
+
+        // Specific handling for Stop Desk error
+        if (ecoError.data?.errors?.stop_desk) {
+          alert(
+            "⚠️ خدمة 'توصيل للمكتب' غير متوفرة في هذه البلدية. يرجى اختيار 'توصيل للمنزل'.",
+          );
+          setLoading(false);
+          return; // Stop the process so user can fix it
+        }
+
+        // Handle other validation errors
+        if (ecoError.data?.errors) {
+          const firstError = Object.values(ecoError.data.errors)[0] as string[];
+          alert(`❌ ${firstError[0] || "حدث خطأ في طلب EcoTrack"}`);
+          setLoading(false);
+          return;
+        }
+
+        // Just log generic errors, don't block if main sheet submission worked
+      }
 
       alert("✅ تم إرسال طلبك بنجاح");
       setForm({
         fullName: "",
         phone: "",
-        wilaya: "",
+        wilayaId: 0,
+        wilayaName: "",
+        commune: "",
         address: "",
         deliveryType: "home",
         quantity: "قطعة واحدة",
@@ -54,9 +120,7 @@ export default function OrderForm() {
   return (
     <div className="bg-secondary/20 p-6 rounded-2xl border border-secondary/50 mt-8">
       <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-        <span className="material-symbols-outlined text-terracotta">
-          shopping_cart_checkout
-        </span>
+        <MdShoppingCartCheckout className="text-terracotta text-2xl" />
         نموذج الطلب السريع
       </h3>
 
@@ -82,22 +146,19 @@ export default function OrderForm() {
           required
           disabled={loading}
         />
-
-        <select
-          name="wilaya"
-          value={form.wilaya}
-          onChange={handleChange}
-          className="w-full bg-white rounded-xl px-4 py-3"
-          required
+        <LocationSelector
+          wilayaId={form.wilayaId}
+          communeName={form.commune}
+          onLocationChange={({ wilayaId, wilayaName, communeName }) => {
+            setForm((prev) => ({
+              ...prev,
+              wilayaId,
+              wilayaName,
+              commune: communeName,
+            }));
+          }}
           disabled={loading}
-        >
-          <option value="">اختر الولاية</option>
-          {wilayas.map((w) => (
-            <option key={w.id} value={`${w.code} - ${w.ar_name}`}>
-              {w.code} - {w.ar_name}
-            </option>
-          ))}
-        </select>
+        />
 
         <div className="grid grid-cols-2 gap-3">
           <button
@@ -109,7 +170,7 @@ export default function OrderForm() {
                 : "border-off-white bg-white grayscale opacity-70"
             }`}
           >
-            <span className="material-symbols-outlined text-2xl">home</span>
+            <MdHome className="text-2xl" />
             <span className="font-bold">توصيل للمنزل</span>
           </button>
           <button
@@ -121,9 +182,7 @@ export default function OrderForm() {
                 : "border-off-white bg-white grayscale opacity-70"
             }`}
           >
-            <span className="material-symbols-outlined text-2xl">
-              business_center
-            </span>
+            <MdBusinessCenter className="text-2xl" />
             <span className="font-bold">توصيل للمكتب</span>
           </button>
         </div>

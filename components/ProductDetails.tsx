@@ -2,35 +2,13 @@ import ProductGallery from "./product/ProductGallery";
 import ProductInfo from "./product/ProductInfo";
 import OrderForm from "./product/OrderForm";
 import TrustBadges from "./product/TrustBadges";
+import { Product } from "@/lib/products";
 
-export default function ProductDetails() {
-  const productData = {
-    title: "قلاية هوائية IRIS سعة 10 لتر \n IPE-AF10-220X",
-    rating: 4.8,
-    reviewsCount: "865 تقييم",
-    price: "13,000 د.ج",
-    oldPrice: "15,000 د.ج",
-    discount: "توصيل مجاني",
-    description:
-      "استمتع بتحضير الطعام بطريقة صحية وسريعة مع القلاية الهوائية الحديثة، التي تجمع بين التكنولوجيا المتقدمة والتصميم الأنيق لتلبية احتياجاتك اليومية. خيارك المثالي لوجبات مقرمشة بدون زيت.",
-    imageSrc: "/2323.png",
+interface ProductDetailsProps {
+  product: Product;
+}
 
-    features: [
-      {
-        label: "تقنية الهواء الساخن الحديثة لطهي الطعام بدون زيت.",
-        value: "",
-      },
-      {
-        label: "سعة كبيرة تتيح لك تحضير أطباق لعائلتك بسهولة.",
-        value: "",
-      },
-      {
-        label: "لوحة تحكم سهلة الاستخدام لضبط درجة الحرارة والوقت.",
-        value: "",
-      },
-    ],
-  };
-
+export default function ProductDetails({ product }: ProductDetailsProps) {
   return (
     <section
       className="py-24 bg-white border-t border-secondary"
@@ -38,15 +16,15 @@ export default function ProductDetails() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12">
-          <ProductGallery
-            alt={productData.title}
-            imageSrc={productData.imageSrc}
-          />
+          <ProductGallery alt={product.title} imageSrc={product.imageSrc} />
           <div className="lg:col-span-5">
             <div className="space-y-6">
-              <ProductInfo {...productData} />
+              <ProductInfo {...product} />
               <div className="bg-secondary/20 p-6 rounded-2xl border border-secondary/50 mt-8">
-                <OrderForm />
+                <OrderForm
+                  productName={product.title}
+                  basePrice={product.priceValue}
+                />
                 <TrustBadges />
               </div>
             </div>

@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
 
 @theme {
   --color-primary: #f2c299;
@@ -21,18 +23,6 @@
   --terracotta: #ac5e49;
   --charcoal: #403b38;
   --bg-off-white: #f5f1ec;
-}
-
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
-}
-
-.filled {
-  font-variation-settings: "FILL" 1;
 }
 
 body {

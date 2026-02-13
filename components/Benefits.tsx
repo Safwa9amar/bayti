@@ -1,44 +1,48 @@
+import { MdVerified, MdLocalShipping, MdPayments } from "react-icons/md";
+import { useTranslations } from "next-intl";
+
 export default function Benefits() {
+  const t = useTranslations("Benefits");
+
   return (
-    <section className="py-24 bg-secondary/20" id="benefits">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold mb-4">بنيت للتميز</h2>
-          <p className="text-charcoal/60">
-            لماذا تعتبر قلاية بيتي الخيار الأمثل لمطبخك واحتياجاتك اليومية.
-          </p>
+    <section className="container mx-auto px-4 lg:px-8 -mt-16 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border-b-4 border-primary flex items-center gap-6 group hover:-translate-y-1 transition-all">
+          <div className="bg-primary/10 p-4 rounded-full text-primary group-hover:scale-110 transition-transform">
+            <MdVerified className="text-3xl" />
+          </div>
+          <div>
+            <h3 className="font-bold text-lg text-brand-dark dark:text-brand-warm">
+              {t("quality.title")}
+            </h3>
+            <p className="text-sm text-brand-dark/60 dark:text-brand-warm/60">
+              {t("quality.subtitle")}
+            </p>
+          </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-secondary hover:border-terracotta transition-colors">
-            <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center text-terracotta mb-6">
-              <span className="material-symbols-outlined text-3xl">
-                hot_tub
-              </span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">تقنية الهواء الحديثة</h3>
-            <p className="text-charcoal/60 leading-relaxed">
-              تقنية الهواء الساخن الحديثة لطهي الطعام بدون زيت، مما يضمن لك
-              وجبات صحية ومقرمشة.
+        <div className="bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border-b-4 border-primary flex items-center gap-6 group hover:-translate-y-1 transition-all">
+          <div className="bg-primary/10 p-4 rounded-full text-primary group-hover:scale-110 transition-transform">
+            <MdLocalShipping className="text-3xl" />
+          </div>
+          <div>
+            <h3 className="font-bold text-lg text-brand-dark dark:text-brand-warm">
+              {t("delivery.title")}
+            </h3>
+            <p className="text-sm text-brand-dark/60 dark:text-brand-warm/60">
+              {t("delivery.subtitle")}
             </p>
           </div>
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-secondary hover:border-terracotta transition-colors">
-            <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center text-terracotta mb-6">
-              <span className="material-symbols-outlined text-3xl">groups</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">سعة عائلية كبيرة</h3>
-            <p className="text-charcoal/60 leading-relaxed">
-              سعة كبيرة تتيح لك تحضير أطباق متنوعة لعائلتك ولضيوفك بكل سهولة
-              ويسر.
-            </p>
+        </div>
+        <div className="bg-white dark:bg-background-dark p-8 rounded-xl shadow-lg border-b-4 border-primary flex items-center gap-6 group hover:-translate-y-1 transition-all">
+          <div className="bg-primary/10 p-4 rounded-full text-primary group-hover:scale-110 transition-transform">
+            <MdPayments className="text-3xl" />
           </div>
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-secondary hover:border-terracotta transition-colors">
-            <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center text-terracotta mb-6">
-              <span className="material-symbols-outlined text-3xl">tune</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3">تحكم سهل وذكي</h3>
-            <p className="text-charcoal/60 leading-relaxed">
-              لوحة تحكم سهلة الاستخدام لضبط درجة الحرارة والوقت بما يتناسب مع كل
-              نوع من الطعام.
+          <div>
+            <h3 className="font-bold text-lg text-brand-dark dark:text-brand-warm">
+              {t("payment.title")}
+            </h3>
+            <p className="text-sm text-brand-dark/60 dark:text-brand-warm/60">
+              {t("payment.subtitle")}
             </p>
           </div>
         </div>

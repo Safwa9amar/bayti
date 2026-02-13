@@ -1,0 +1,89 @@
+{
+  "Nav": {
+    "contact": "Contact Us",
+    "searchPlaceholder": "Search for kitchen appliances, air fryers..."
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact Us",
+    "about": "About Bayti",
+    "products": "Our Products",
+    "terms": "Terms of Use",
+    "policy": "Privacy Policy",
+    "rights": "All rights reserved © {year} Bayti"
+  },
+  "Header": {
+    "badge": "Premium Home Appliances",
+    "titlePrefix": "Bayti - Quality you can touch",
+    "titleSuffix": "in every corner",
+    "description": "Discover a curated collection of the finest kitchen tools and home appliances designed to make your daily life easier and more elegant.",
+    "shopNow": "Shop Now",
+    "viewProducts": "View Products"
+  },
+  "Categories": {
+    "title": "Shop by Category",
+    "viewAll": "View All",
+    "items": {
+      "cookingAppliences": {
+        "title": "Cooking Appliances",
+        "description": "Healthy and crispy food in minutes"
+      },
+      "kitchenTools": {
+        "title": "Kitchen Tools",
+        "description": "Your loyal assistants in the kitchen"
+      },
+      "homeOrganization": {
+        "title": "Home Organization",
+        "description": "A place for everything"
+      }
+    }
+  },
+  "Benefits": {
+    "quality": {
+      "title": "Quality First",
+      "subtitle": "Comprehensive warranty on all products"
+    },
+    "delivery": {
+      "title": "Fast Delivery",
+      "subtitle": "Delivery to 58 states in record time"
+    },
+    "payment": {
+      "title": "Cash on Delivery",
+      "subtitle": "Pay only when you receive your order"
+    }
+  },
+  "Testimonials": {
+    "title": "Trusted by Thousands of Families",
+    "subtitle": "\"We don't just sell appliances, we provide solutions for a better life in every Algerian home\"",
+    "items": [
+      {
+        "text": "I bought an air fryer from Bayti, delivery was very fast to Setif and the product is original as described. Thank you!",
+        "author": "Ahmed Ben Mohamed",
+        "location": "Customer from Setif"
+      },
+      {
+        "text": "The best thing is their after-sales service. I had a simple issue and they replied quickly via WhatsApp.",
+        "author": "Sara Lamari",
+        "location": "Customer from Oran"
+      },
+      {
+        "text": "Really high quality. Every corner of my kitchen now has a touch of Bayti. Cash on delivery really gives peace of mind.",
+        "author": "Leila Khalil",
+        "location": "Customer from Algiers"
+      }
+    ]
+  },
+  "ProductList": {
+    "title": "Best Sellers",
+    "subtitle": "Products loved by our Algerian families",
+    "cashOnDelivery": "Cash on Delivery",
+    "orderNow": "Order Now",
+    "reviews": "Reviews"
+  },
+  "Common": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact Us"
+  }
+}

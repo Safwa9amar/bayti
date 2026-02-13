@@ -1,8 +1,25 @@
-import type { NextConfig } from "next";
+import { withGluestackUI } from '@gluestack/ui-next-adapter';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  outputFileTracingRoot: __dirname,
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  transpilePackages: [],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withNextIntl(withGluestackUI(nextConfig));

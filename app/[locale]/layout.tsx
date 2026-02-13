@@ -1,8 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import "../globals.css";
 import Script from "next/script";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { ThemeProvider } from "@/components/admin/ThemeProvider";
+import { GluestackWrapper } from "@/components/admin/GluestackWrapper";
+
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bayti-dz.vercel.app/"),
   title: "بيتي | أجهزة مطبخ احترافية وصحية في الجزائر",
   description:
     "اكتشف مجموعة بيتي للأجهزة المنزلية الذكية. قلايات هوائية، خلاطات ومطاحن عالية الجودة لتحويل مطبخك إلى مساحة احترافية وصحية.",
@@ -20,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ar_DZ",
-    url: "https://bayti-dz.vercel.app/", // Assuming a placeholder if not known
+    url: "https://bayti-dz.vercel.app/",
     siteName: "بيتي - Bayti",
     title: "بيتي | أجهزة مطبخ احترافية وصحية",
     description:
@@ -51,13 +60,35 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="ar" dir="rtl" className="scroll-smooth">
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
       <head>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -65,10 +96,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
+
         {/* Meta Pixel */}
         <Script
           id="facebook-pixel"
@@ -83,23 +111,28 @@ export default function RootLayout({
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1996891180857184');
+              fbq('init', '${process.env.NEXT_PUBLIC_CAMPAGN_ID}');
               fbq('track', 'PageView');
             `,
           }}
         />
       </head>
       <body className="antialiased bg-off-white text-charcoal transition-colors duration-300">
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1996891180857184&ev=PageView&noscript=1"
-          />
-        </noscript>
-
-        {children}
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <GluestackWrapper>
+              <noscript>
+                <img
+                  height="1"
+                  width="1"
+                  style={{ display: "none" }}
+                  src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_CAMPAGN_ID}&ev=PageView&noscript=1`}
+                />
+              </noscript>
+              {children}
+            </GluestackWrapper>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
